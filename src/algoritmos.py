@@ -76,3 +76,50 @@ def counting_sort_visual(estoque):
             yield True 
 
     yield False
+
+def radix_sort_visual(estoque):
+    """
+    Algoritmo Radix Sort: Ordena os elementos processando os dígitos individualmente.
+    Começa pelas unidades, depois dezenas, centenas, etc.
+    """
+    n = len(estoque)
+    if n <= 1:
+        yield False
+        return
+
+    valor_max = max(item.valor for item in estoque)
+    xs_originais = sorted([item.x for item in estoque])
+    
+    # O exp é 1 para as unidades, 10 para as dezenas, 100 para centenas...
+    exp = 1
+    while valor_max // exp > 0:
+        # Sub-rotina de Counting Sort baseada apenas no dígito atual
+        output = [None] * n
+        contagem = [0] * 10
+        
+        # Conta as ocorrências do dígito
+        for i in range(n):
+            indice = (estoque[i].valor // exp) % 10
+            contagem[indice] += 1
+            
+        # Calcula as posições exatas no array de saída
+        for i in range(1, 10):
+            contagem[i] += contagem[i - 1]
+            
+        # Constrói o array de saída ordenado pelo dígito atual (lendo de trás para frente para manter a estabilidade)
+        i = n - 1
+        while i >= 0:
+            indice = (estoque[i].valor // exp) % 10
+            output[contagem[indice] - 1] = estoque[i]
+            contagem[indice] -= 1
+            i -= 1
+            
+        # Aplica a ordenação parcial ao estoque e anima a troca
+        for i in range(n):
+            estoque[i] = output[i]
+            estoque[i].x = xs_originais[i]
+            yield True
+            
+        exp *= 10
+        
+    yield False
