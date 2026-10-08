@@ -5,7 +5,7 @@ import os
 
 # Importações dos módulos separados
 from src.item import ItemTaverna
-from src.algoritmos import bubble_sort_visual
+from src.algoritmos import bubble_sort_visual, bucket_sort_visual
 
 # Constantes
 LARGURA = 1024
@@ -32,6 +32,9 @@ def main():
     tela = pygame.display.set_mode((LARGURA, ALTURA))
     pygame.display.set_caption("🍻 Organizador de Taverna - Ordenação Mágica")
     relogio = pygame.time.Clock()
+    
+    # Fonte para o HUD de atalhos
+    fonte_hud = pygame.font.Font(None, 24)
 
     usar_bg = False
     fundo_img = None
@@ -64,13 +67,19 @@ def main():
                 rodando = False
             
             if evento.type == pygame.KEYDOWN:
+                # ESPAÇO: Gera novo estoque
                 if evento.key == pygame.K_SPACE and not ordenando:
                     estoque_atual = gerar_estoque(15)
                 
-                # Controle de execução da ordenação
+                # ENTER: Bubble Sort
                 if evento.key == pygame.K_RETURN and not ordenando:
                     ordenando = True
                     gerador_ordenacao = bubble_sort_visual(estoque_atual)
+                    
+                # B: Bucket Sort
+                if evento.key == pygame.K_b and not ordenando:
+                    ordenando = True
+                    gerador_ordenacao = bucket_sort_visual(estoque_atual)
 
         if ordenando and gerador_ordenacao is not None:
             try:
@@ -79,14 +88,33 @@ def main():
                 ordenando = False
                 gerador_ordenacao = None
 
+        # Renderização do Fundo
         if usar_bg and fundo_img:
             tela.blit(fundo_img, (0, 0))
         else:
             tela.fill(COR_FUNDO)
             pygame.draw.rect(tela, COR_PRATELEIRA, (0, ALTURA - 100, LARGURA, 100))
 
+        # Renderização dos Itens
         for item in estoque_atual:
             item.desenhar(tela)
+            
+        # Renderização do HUD de Atalhos
+        painel_rect = pygame.Rect(15, 15, 260, 110)
+        pygame.draw.rect(tela, COR_FUNDO, painel_rect, border_radius=8)
+        pygame.draw.rect(tela, (230, 215, 180), painel_rect, width=2, border_radius=8)
+        
+        textos_hud = [
+            "📜 Grimório de Atalhos:",
+            "[ESPAÇO] Embaralhar Poções",
+            "[ENTER] Bubble Sort",
+            "[ B ] Bucket Sort"
+        ]
+        
+        for i, linha in enumerate(textos_hud):
+            cor_texto = (230, 215, 180) if i == 0 else (255, 255, 255)
+            surf_texto = fonte_hud.render(linha, True, cor_texto)
+            tela.blit(surf_texto, (30, 25 + (i * 22)))
 
         pygame.display.flip()
         
