@@ -5,7 +5,7 @@ import os
 
 # Importações dos módulos separados
 from src.item import ItemTaverna
-from src.algoritmos import bubble_sort_visual, bucket_sort_visual
+from src.algoritmos import bubble_sort_visual, bucket_sort_visual, counting_sort_visual
 
 # Constantes
 LARGURA = 1024
@@ -80,6 +80,11 @@ def main():
                 if evento.key == pygame.K_b and not ordenando:
                     ordenando = True
                     gerador_ordenacao = bucket_sort_visual(estoque_atual)
+                    
+                # C: Counting Sort
+                if evento.key == pygame.K_c and not ordenando:
+                    ordenando = True
+                    gerador_ordenacao = counting_sort_visual(estoque_atual)
 
         if ordenando and gerador_ordenacao is not None:
             try:
@@ -100,7 +105,7 @@ def main():
             item.desenhar(tela)
             
         # Renderização do HUD de Atalhos
-        painel_rect = pygame.Rect(15, 15, 260, 110)
+        painel_rect = pygame.Rect(15, 15, 260, 135)
         pygame.draw.rect(tela, COR_FUNDO, painel_rect, border_radius=8)
         pygame.draw.rect(tela, (230, 215, 180), painel_rect, width=2, border_radius=8)
         
@@ -108,7 +113,8 @@ def main():
             "📜 Grimório de Atalhos:",
             "[ESPAÇO] Embaralhar Poções",
             "[ENTER] Bubble Sort",
-            "[ B ] Bucket Sort"
+            "[ B ] Bucket Sort",
+            "[ C ] Counting Sort"
         ]
         
         for i, linha in enumerate(textos_hud):
