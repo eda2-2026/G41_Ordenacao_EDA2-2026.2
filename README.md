@@ -1,7 +1,7 @@
 # 🍻 Organizador de Taverna - Simulador de Ordenação Mágica
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Status-Em_Desenvolvimento-yellow?style=flat-square" alt="Status do projeto">
+  <img src="https://img.shields.io/badge/Status-Concluído-success?style=flat-square" alt="Status do projeto">
   <img src="https://img.shields.io/badge/Linguagem-Python-3776AB?logo=python&logoColor=white" alt="Linguagem Python">
   <img src="https://img.shields.io/badge/Interface-Pygame-F4C935?logo=python&logoColor=black" alt="Pygame">
 </p>
@@ -18,13 +18,14 @@ Assista à apresentação completa do projeto no YouTube:
 
 [![Apresentação do Organizador de Taverna](https://img.shields.io/badge/▶_Assistir_no_YouTube-red?logo=youtube&logoColor=white&style=for-the-badge)](LINK_DO_SEU_VIDEO_AQUI)
 
-## 💡 Diferenciais Técnicos
+## 💡 Diferenciais Técnicos e Lúdicos
 
-O principal destaque deste projeto é a união da lógica algorítmica rigorosa com feedback visual dinâmico:
+O principal destaque deste projeto é a união da lógica algorítmica rigorosa com feedback visual dinâmico e gamificação:
 
-- **Implementação Manual:** Todos os algoritmos de ordenação foram codificados do zero, sem o uso de funções nativas como `sort()`.
-- **Renderização Visual (Pygame):** Animações em tempo real mostrando os *swaps* (trocas) e realocações dos itens nas prateleiras da taverna.
-- **Categorização em Múltiplos Níveis:** Aplicação de algoritmos estáveis para organizar primeiro por grupos (ex: baldes de raridade) e, em seguida, por valores específicos (ex: poder da poção).
+- **Implementação Manual:** Todos os algoritmos de ordenação foram codificados do zero utilizando geradores (`yield`), sem o uso de funções nativas como `sort()`.
+- **Modo Jogo (Gamificação):** Uma máquina de estados interativa onde o simulador executa um algoritmo secreto e desafia o jogador/avaliador a adivinhar qual método foi utilizado com base no padrão visual da organização.
+- **Renderização Visual (Pygame):** Animações em *slow-motion* mostrando os *swaps* (trocas) e realocações dos itens sobre o balcão da taverna, apoiados por um HUD (Grimório de Atalhos).
+- **Categorização em Múltiplos Níveis:** Aplicação de algoritmos estáveis para organizar primeiro por grupos (ex: baldes de raridade visual) e, em seguida, por valores específicos expressos em etiquetas de preço.
 
 Essas abordagens tornam o estudo de ordenação mais tangível e demonstram na prática os conceitos de Estruturas de Dados 2.
 
@@ -41,6 +42,8 @@ Aplicado para ordenar atributos com intervalos de valores bem definidos e discre
 ### 📊 Radix Sort
 
 Utilizado para organizar artefatos com valores numéricos maiores e mais complexos (como o valor de venda em moedas de ouro). O algoritmo processa os dígitos individualmente, garantindo uma ordenação estável e linear para os itens mais valiosos do inventário.
+
+*Nota: O **Bubble Sort** também está incluído no projeto como algoritmo base de demonstração para fins comparativos.*
 
 ## 🛠️ Tecnologias Utilizadas
 
@@ -60,7 +63,7 @@ Certifique-se de ter o Python 3.x instalado em sua máquina e o gerenciador de p
 1. Clone o repositório:
 
 ```bash
-git clone [https://github.com/eda2-2026/G41_Ordenacao_EDA2-2026.2.git](https://github.com/eda2-2026/G41_Ordenacao_EDA2-2026.2.git)
+git clone https://github.com/eda2-2026/G41_Ordenacao_EDA2-2026.2.git
 ```
 2. Acesse a pasta do projeto:
 
@@ -78,17 +81,19 @@ pip install pygame
 python main.py
 ```
 
-## 🧪 Funcionalidades do Sistema
+## 🧪 Funcionalidades e Controles do Sistema
 
-- Geração aleatória de lotes de suprimentos e poções caóticas;
+- **Geração aleatória:** Lotes de suprimentos e poções caóticas com proporções e sprites dinâmicos;
+- **Animação em tempo real:** Controle preciso do FPS para visualização pedagógica da organização das prateleiras;
+- **Arquitetura Modular:** Separação clara entre Entidades Visuais (`item.py`), Regras de Negócio Matemáticas (`algoritmos.py`) e Loop Gráfico (`main.py`).
 
-- Interface gráfica interativa para escolha do método de ordenação;
-
-- imação em tempo real da organização das prateleiras;
-
-- Exibição de métricas de desempenho (tempo de execução e número de trocas);
-
-- Reinício rápido para testar diferentes algoritmos com novos itens.
+**Grimório de Atalhos (HUD):**
+- `ESPAÇO`: Embaralhar prateleira (Gera novos valores)
+- `J`: Ativar Modo Jogo (Adivinhar algoritmo secreto)
+- `ENTER`: Executar Bubble Sort
+- `B`: Executar Bucket Sort
+- `C`: Executar Counting Sort
+- `R`: Executar Radix Sort
 
 ## 🌐 Prints da Interface
 
