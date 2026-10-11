@@ -97,9 +97,23 @@ python main.py
 
 ## 🌐 Prints da Interface
 
-### Menu da Taverna
+Aqui estão alguns momentos do simulador em ação, destacando as funcionalidades de organização e o Modo Jogo interativo.
 
-### Ordenações em Andamento
+### O Balcão da Taverna (Aguardando Magia)
+<p align="center">
+  <img src="assets/game1.png" alt="Interface principal da taverna com poções desorganizadas" width="800">
+</p>
+
+### Modo Jogo: O Desafio
+<p align="center">
+  <img src="assets/game2.png" alt="Pergaminho perguntando qual magia organizou as poções" width="800">
+</p>
+
+### Resultado: Vitória ou Derrota
+<p align="center">
+  <img src="assets/game4.png" alt="Tela de acerto mostrando que o feitiço foi o Radix Sort" width="400">
+  <img src="assets/game3.png" alt="Tela de erro revelando que a magia correta era o Bucket Sort" width="400">
+</p>
 
 ## 📝 Política de Commits (Conventional Commits)
 
