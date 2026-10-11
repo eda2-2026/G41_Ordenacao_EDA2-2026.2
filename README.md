@@ -16,7 +16,7 @@ O projeto tem como foco a implementação 100% manual de algoritmos de ordenaç�
 
 Assista à apresentação completa do projeto no YouTube:
 
-[![Apresentação do Organizador de Taverna](https://img.shields.io/badge/▶_Assistir_no_YouTube-red?logo=youtube&logoColor=white&style=for-the-badge)](LINK_DO_SEU_VIDEO_AQUI)
+[![Apresentação do Organizador de Taverna](https://img.shields.io/badge/▶_Assistir_no_YouTube-red?logo=youtube&logoColor=white&style=for-the-badge)](https://youtu.be/nJ-KT8Zxp4A)
 
 ## 💡 Diferenciais Técnicos e Lúdicos
 
